@@ -1,48 +1,59 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Transfer } from '../entities/transfer.entity';
+
+import { CreateTransferDto } from '../DTOs/common/transfer.dto';
+import { UpdateTransferDto } from '../DTOs/common/transfer.dto';
 
 @Injectable()
 export class TransferService {
-  private transfers: any[] = []; // Simulated in-memory database
+  constructor(
+    @InjectModel(Transfer.name)
+    private readonly transferModel: Model<Transfer>
+  ) {}
 
-  findAll(): any[] {
-    return this.transfers;
+  async findAll(): Promise<Transfer[]> {
+    return this.transferModel.find().exec();
   }
 
-  findOne(id: number): any {
-    const transfer = this.transfers.find((t) => t.id === id);
+  async findOne(transferId: string): Promise<Transfer> {
+    const transfer = await this.transferModel.findOne({ transferId }).exec();
     if (!transfer) {
-      throw new NotFoundException(`Transfer with ID ${id} not found`);
+      throw new NotFoundException(`Transfer with ID ${transferId} not found`);
     }
     return transfer;
   }
 
-  create(transfer: any): any {
-    const newTransfer = { id: this.generateId(), ...transfer };
-    this.transfers.push(newTransfer);
-    return newTransfer;
+  async create(createTransferDto: CreateTransferDto): Promise<Transfer> {
+    const createdTransfer = new this.transferModel(createTransferDto);
+    return createdTransfer.save();
   }
 
-  update(id: number, transfer: any): any {
-    const index = this.transfers.findIndex((t) => t.id === id);
-    if (index === -1) {
-      throw new NotFoundException(`Transfer with ID ${id} not found`);
+  async update(
+    transferId: string,
+    updateTransferDto: UpdateTransferDto,
+  ): Promise<Transfer> {
+    const existingTransfer = await this.transferModel
+      .findOneAndUpdate(
+        { transferId },
+        { $set: updateTransferDto },
+        { new: true },
+      )
+      .exec();
+    if (!existingTransfer) {
+      throw new NotFoundException(`Transfer with ID ${transferId} not found`);
     }
-    this.transfers[index] = { ...this.transfers[index], ...transfer };
-    return this.transfers[index];
+    return existingTransfer;
   }
 
-  remove(id: number): any {
-    const index = this.transfers.findIndex((t) => t.id === id);
-    if (index === -1) {
-      throw new NotFoundException(`Transfer with ID ${id} not found`);
+  async remove(transferId: string): Promise<Transfer> {
+    const deletedTransfer = await this.transferModel
+      .findOneAndDelete({ transferId })
+      .exec();
+    if (!deletedTransfer) {
+      throw new NotFoundException(`Transfer with ID ${transferId} not found`);
     }
-    const deletedTransfer = this.transfers.splice(index, 1);
-    return deletedTransfer[0];
-  }
-
-  private generateId(): number {
-    return this.transfers.length > 0
-      ? Math.max(...this.transfers.map((t) => t.id)) + 1
-      : 1;
+    return deletedTransfer;
   }
 }

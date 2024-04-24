@@ -2,39 +2,50 @@ import {
   Controller,
   Get,
   Post,
-  Body,
-  Param,
   Put,
   Delete,
+  Param,
+  Body,
+  NotFoundException,
 } from '@nestjs/common';
 import { TransferService } from '../services/transfer.service';
+import { Transfer } from '../entities/transfer.entity';
+import {
+  CreateTransferDto,
+  UpdateTransferDto,
+} from '../DTOs/common/transfer.dto';
 
 @Controller('transfers')
 export class TransferController {
   constructor(private readonly transferService: TransferService) {}
 
-  @Get()
-  findAll(): any[] {
+  @Get('todos')
+  async findAll(): Promise<Transfer[]> {
     return this.transferService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): any {
-    return this.transferService.findOne(+id);
+  async findOne(@Param('id') transferId: string): Promise<Transfer> {
+    return this.transferService.findOne(transferId);
   }
 
   @Post()
-  create(@Body() transfer: any): any {
-    return this.transferService.create(transfer);
+  async create(
+    @Body() createTransferDto: CreateTransferDto,
+  ): Promise<Transfer> {
+    return this.transferService.create(createTransferDto);
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() transfer: any): any {
-    return this.transferService.update(+id, transfer);
+  async update(
+    @Param('id') transferId: string,
+    @Body() updateTransferDto: UpdateTransferDto,
+  ): Promise<Transfer> {
+    return this.transferService.update(transferId, updateTransferDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string): any {
-    return this.transferService.remove(+id);
+  async remove(@Param('id') transferId: string): Promise<Transfer> {
+    return this.transferService.remove(transferId);
   }
 }

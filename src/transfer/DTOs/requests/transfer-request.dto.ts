@@ -1,8 +1,7 @@
 import { IsDate, IsNotEmpty } from 'class-validator';
 import { Type } from 'class-transformer';
-import { TransferDto } from '../common/transfer.dto';
-
-export class BookResponseDto extends TransferDto {
+import { CreateTransferDto } from '../common/transfer.dto';
+export class BookResponseDto extends CreateTransferDto {
   @IsDate()
   @IsNotEmpty()
   @Type(() => Date)
