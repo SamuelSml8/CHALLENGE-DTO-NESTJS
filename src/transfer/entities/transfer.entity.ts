@@ -14,7 +14,8 @@ export class Transfer extends Document {
   @Prop({ required: true })
   accountDestination: string;
 
-  createdAt: Date;
+  createdAt?: Date;
+  updateAt?: Date;
 }
 
 export const TransferSchema = SchemaFactory.createForClass(Transfer);
