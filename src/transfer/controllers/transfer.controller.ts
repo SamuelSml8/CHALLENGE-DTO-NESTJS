@@ -19,7 +19,7 @@ import {
 export class TransferController {
   constructor(private readonly transferService: TransferService) {}
 
-  @Get('todos')
+  @Get('all')
   async findAll(): Promise<Transfer[]> {
     return this.transferService.findAll();
   }

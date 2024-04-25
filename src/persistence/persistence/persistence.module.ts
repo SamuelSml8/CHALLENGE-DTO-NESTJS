@@ -12,7 +12,7 @@ import db_config from './db.config';
         const uriDB =
           env === 'local'
             ? `${db.connection}${db.host}${db.database}`
-            : `mongodb+srv://${db.username}:${db.password}@filtro.xq3dxlh.mongodb.net/${db.database}?retryWrite=true&w=majority`;
+            : `mongodb+srv://${db.username}:${db.password}@nestjs.gosnxah.mongodb.net/${db.database}?retryWrite=true&w=majority`;
 
         return {
           uri: uriDB,
