@@ -4,7 +4,7 @@
 
 ## Description
 
-Challenge of nestjs assigned by trainer Lina
+Challenge of NestJS assigned by trainer Lina
 
 ## Installation
 
