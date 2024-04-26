@@ -10,11 +10,11 @@ import { UpdateTransferDto } from '../DTOs/common/transfer.dto';
 export class TransferService {
   constructor(
     @InjectModel(Transfer.name)
-    private readonly transferModel: Model<Transfer>
+    private transferModel: Model<Transfer>
   ) {}
 
   async findAll(): Promise<Transfer[]> {
-    return this.transferModel.find().exec();
+    return await this.transferModel.find().exec();
   }
 
   async findOne(transferId: string): Promise<Transfer> {

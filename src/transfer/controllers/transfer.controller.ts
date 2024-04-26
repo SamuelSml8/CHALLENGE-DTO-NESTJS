@@ -6,7 +6,6 @@ import {
   Delete,
   Param,
   Body,
-  NotFoundException,
 } from '@nestjs/common';
 import { TransferService } from '../services/transfer.service';
 import { Transfer } from '../entities/transfer.entity';
