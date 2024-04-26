@@ -39,58 +39,7 @@ $ npm run test:cov
 ```
 
 ## Postman Collection
-[CHALLENGE-DTO.postman_collection.json](https://github.com/SamuelSml8/CHALLENGE-DTO-NESTJS/files/15131372/CHALLENGE-DTO.postman_collection.json)
-{
-	"info": {
-		"_postman_id": "65b5e623-d368-4e1d-9a05-5269973517b9",
-		"name": "CHALLENGE-DTO",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-		"_exporter_id": "27402576"
-	},
-	"item": [
-		{
-			"name": "get all transfers",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "get one transfer",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "create a transfer",
-			"request": {
-				"method": "POST",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "update transfer",
-			"request": {
-				"method": "PUT",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "remove transfer",
-			"request": {
-				"method": "DELETE",
-				"header": []
-			},
-			"response": []
-		}
-	]
-}
-
+[Collection Postman](https://github.com/SamuelSml8/CHALLENGE-DTO-NESTJS/files/15131372/CHALLENGE-DTO.postman_collection.json)
 
 ## Environment variables
 
