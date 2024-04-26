@@ -1,5 +1,5 @@
 <p align="center">
-![soft logo](https://github.com/SamuelSml8/CHALLENGE-DTO-NESTJS/assets/127326262/44ab5c71-a043-478b-a409-e3433cedb53c)
+(https://github.com/SamuelSml8/CHALLENGE-DTO-NESTJS/assets/127326262/44ab5c71-a043-478b-a409-e3433cedb53c)
 
 </p>
 
