@@ -4,7 +4,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Challenge of nestjs assigned by trainer Lina
 
 ## Installation
 
@@ -44,10 +44,7 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+**Authors**
+- [Samuel Vera](https://github.com/SamuelSml8) -
+- [Camilo Manco](https://github.com/cristianManco) - 
 
-## License
-
-Nest is [MIT licensed](LICENSE).
