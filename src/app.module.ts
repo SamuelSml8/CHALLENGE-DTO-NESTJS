@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { PersistenceModule } from './persistence/persistence/persistence.module';
 import dbConfig from './persistence/persistence/db.config';
+import { TransferController } from './transfer/controllers/transfer.controller';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import dbConfig from './persistence/persistence/db.config';
     PersistenceModule,
     TransferModule,
   ],
-  controllers: [],
+  controllers: [TransferController],
   providers: [],
 })
 export class AppModule {}

@@ -6,12 +6,11 @@ import { TransferService } from './services/transfer.service';
 @Module({
   imports: [
     MongooseModule.forFeature([
-      { 
-        name: Transfer.name, 
-        schema: TransferSchema 
-    
-    }
-  ]),
+      {
+        name: Transfer.name,
+        schema: TransferSchema,
+      },
+    ]),
   ],
   providers: [TransferService],
   exports: [TransferService],
