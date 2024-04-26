@@ -1,5 +1,6 @@
-
-![soft logo](https://github.com/SamuelSml8/CHALLENGE-DTO-NESTJS/assets/127326262/8bf30ce6-f1a8-4428-bf1a-a1aef54eb4ff)
+<div align="center">
+  <img src="https://github.com/SamuelSml8/CHALLENGE-DTO-NESTJS/assets/127326262/8bf30ce6-f1a8-4428-bf1a-a1aef54eb4ff" alt="soft logo" width="300" />
+</div>
 
 ## Description
 
