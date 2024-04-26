@@ -10,50 +10,70 @@ import { UpdateTransferDto } from '../DTOs/common/transfer.dto';
 export class TransferService {
   constructor(
     @InjectModel(Transfer.name)
-    private transferModel: Model<Transfer>
+    private transferModel: Model<Transfer>,
   ) {}
 
   async findAll(): Promise<Transfer[]> {
-    return await this.transferModel.find().exec();
+    try {
+      return await this.transferModel.find().exec();
+    } catch (error) {
+      console.error(error, 'Error Internal Server');
+    }
   }
 
   async findOne(transferId: string): Promise<Transfer> {
-    const transfer = await this.transferModel.findOne({ transferId }).exec();
-    if (!transfer) {
-      throw new NotFoundException(`Transfer with ID ${transferId} not found`);
+    try {
+      const transfer = await this.transferModel.findOne({ transferId }).exec();
+      if (!transfer) {
+        throw new NotFoundException(`Transfer with ID ${transferId} not found`);
+      }
+      return transfer;
+    } catch (error) {
+      console.error(error, 'Error Internal Server');
     }
-    return transfer;
   }
 
   async create(createTransferDto: CreateTransferDto): Promise<Transfer> {
-    const createdTransfer = await new this.transferModel(createTransferDto);
-    return createdTransfer.save();
+    try {
+      const createdTransfer = await new this.transferModel(createTransferDto);
+      return createdTransfer.save();
+    } catch (error) {
+      console.error(error, 'Error Internal Server');
+    }
   }
 
   async update(
     transferId: string,
     updateTransferDto: UpdateTransferDto,
   ): Promise<Transfer> {
-    const existingTransfer = await this.transferModel
-      .findOneAndUpdate(
-        { transferId },
-        { $set: updateTransferDto },
-        { new: true },
-      )
-      .exec();
-    if (!existingTransfer) {
-      throw new NotFoundException(`Transfer with ID ${transferId} not found`);
+    try {
+      const existingTransfer = await this.transferModel
+        .findOneAndUpdate(
+          { transferId },
+          { $set: updateTransferDto },
+          { new: true },
+        )
+        .exec();
+      if (!existingTransfer) {
+        throw new NotFoundException(`Transfer with ID ${transferId} not found`);
+      }
+      return existingTransfer;
+    } catch (error) {
+      console.error(error, 'Error Internal Server');
     }
-    return existingTransfer;
   }
 
   async remove(transferId: string): Promise<Transfer> {
-    const deletedTransfer = await this.transferModel
-      .findOneAndDelete({ transferId })
-      .exec();
-    if (!deletedTransfer) {
-      throw new NotFoundException(`Transfer with ID ${transferId} not found`);
+    try {
+      const deletedTransfer = await this.transferModel
+        .findOneAndDelete({ transferId })
+        .exec();
+      if (!deletedTransfer) {
+        throw new NotFoundException(`Transfer with ID ${transferId} not found`);
+      }
+      return deletedTransfer;
+    } catch (error) {
+      console.error(error, 'Error Internal Server');
     }
-    return deletedTransfer;
   }
 }
