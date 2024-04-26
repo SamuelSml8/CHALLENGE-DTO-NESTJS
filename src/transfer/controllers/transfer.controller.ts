@@ -28,14 +28,14 @@ export class TransferController {
     return this.transferService.findOne(transferId);
   }
 
-  @Post()
+  @Post('create')
   async create(
     @Body() createTransferDto: CreateTransferDto,
   ): Promise<Transfer> {
     return this.transferService.create(createTransferDto);
   }
 
-  @Put(':id')
+  @Put('update/:id')
   async update(
     @Param('id') transferId: string,
     @Body() updateTransferDto: UpdateTransferDto,
@@ -43,7 +43,7 @@ export class TransferController {
     return this.transferService.update(transferId, updateTransferDto);
   }
 
-  @Delete(':id')
+  @Delete('delete/:id')
   async remove(@Param('id') transferId: string): Promise<Transfer> {
     return this.transferService.remove(transferId);
   }

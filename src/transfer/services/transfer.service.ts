@@ -26,7 +26,7 @@ export class TransferService {
   }
 
   async create(createTransferDto: CreateTransferDto): Promise<Transfer> {
-    const createdTransfer = new this.transferModel(createTransferDto);
+    const createdTransfer = await new this.transferModel(createTransferDto);
     return createdTransfer.save();
   }
 
